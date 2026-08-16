@@ -1,0 +1,22 @@
+name: k8s-networking-mcp
+framework: mcp-go
+version: 0.1.0
+description: MCP server built with mcp-go
+author: Prashant Kumar
+secrets:
+    local:
+        enabled: false
+        provider: env
+        file: .env.local
+    production:
+        enabled: false
+        provider: kubernetes
+        secretName: k8s-networking-mcp-secrets-production
+        namespace: default
+    staging:
+        enabled: false
+        provider: kubernetes
+        secretName: k8s-networking-mcp-secrets-staging
+        namespace: default
+created_at: 2026-08-16T14:43:53.798652437+05:30
+updated_at: 2026-08-16T14:43:54.00489735+05:30
