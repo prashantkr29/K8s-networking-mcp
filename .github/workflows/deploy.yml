@@ -53,7 +53,7 @@ jobs:
       - name: Apply namespace and RBAC
         run: |
           kubectl apply -f deploy/namespace.yaml
-          kubectl apply -f deploy/serviceaccount.yaml
+          kubectl apply -f deploy/sa.yaml
           kubectl apply -f deploy/rbac.yaml
 
       - name: Update image tag in deployment
