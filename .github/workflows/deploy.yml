@@ -44,6 +44,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v4
+        with:
+          version: 'latest'
       # ARC runner has a ServiceAccount — kubectl uses it automatically
       # no kubeconfig setup needed
       - name: Apply namespace and RBAC
