@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-networking-mcp
+  namespace: k8s-networking-mcp
+  labels:
+    app: k8s-networking-mcp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-networking-mcp
+  template:
+    metadata:
+      labels:
+        app: k8s-networking-mcp
+    spec:
+      serviceAccountName: k8s-networking-mcp
+      containers:
+        - name: k8s-networking-mcp
+          image: YOUR_DOCKERHUB_USERNAME/k8s-networking-mcp:latest  # replaced by pipeline
+          imagePullPolicy: Always
+          args:
+            - --http=:8080          # StreamableHTTP transport
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
